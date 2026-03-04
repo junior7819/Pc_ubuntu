@@ -18,5 +18,5 @@ jobs:
         with:
           username: ${{ secrets.KAGGLE_USERNAME }}
           key: ${{ secrets.KAGGLE_TOKEN }}
-          title: KaggleTestCI
+          kernel: junior7819/gpu_runner_test
           code_file: .github/script/gpu_runner.py
