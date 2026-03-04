@@ -1,23 +1,22 @@
-name: kaggle gpu test
+name: Kaggle GPU Runner
 
 on:
-  push:
-    branches: [ master, main ]
+  workflow_dispatch:
 
 jobs:
-  kaggle-ci:
-    name: kaggle CI
+  run-kaggle:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Run kaggle
+      - name: Push Kernel
         uses: Frederisk/kaggle-action@v1.0.0
         with:
           username: ${{ secrets.KAGGLE_USERNAME }}
-          key: ${{ secrets.KAGGLE_TOKEN }}
+          key: ${{ secrets.KAGGLE_KEY }}
+          id: junioronl/gpu_runner_test
           title: gpu_runner_test
           code_file: .github/script/gpu_runner.py
           language: python
