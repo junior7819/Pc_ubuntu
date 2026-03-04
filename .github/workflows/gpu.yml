@@ -1,0 +1,22 @@
+name: kaggle gpu test
+
+on:
+  push:
+    branches: [master, main]
+
+jobs:
+  kaggle-ci:
+    name: kaggle CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run kaggle
+        uses: Frederisk/kaggle-action@v1.0.0
+        with:
+          username: ${{ secrets.KAGGLE_USERNAME }}
+          key: ${{ secrets.KAGGLE_TOKEN }}
+          title: KaggleTestCI
+          code_file: .github/script/gpu_runner.py
