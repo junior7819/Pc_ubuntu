@@ -2,7 +2,7 @@ name: kaggle gpu test
 
 on:
   push:
-    branches: [master, main]
+    branches: [ master, main ]
 
 jobs:
   kaggle-ci:
@@ -18,5 +18,9 @@ jobs:
         with:
           username: ${{ secrets.KAGGLE_USERNAME }}
           key: ${{ secrets.KAGGLE_TOKEN }}
-          kernel: junior7819/gpu_runner_test
+          title: gpu_runner_test
           code_file: .github/script/gpu_runner.py
+          language: python
+          kernel_type: script
+          enable_gpu: true
+          enable_internet: true
